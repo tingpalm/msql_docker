@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  sql-server-db:
+    container_name: sqlvan
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      - SA_PASSWORD='1Pass2Word'
+      - ACCEPT_EULA='Y'
+    volumes:
+      - './data-mssql:/var/opt/mssql/data'  
+    ports:
+      - '1433:1433'  
+
+# docker run --rm --name sql_vanning -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=1Pass2Word'  -p 1433:1433 -v sqlvolume:/var/opt/mssql -d mcr.microsoft.com/mssql/server
